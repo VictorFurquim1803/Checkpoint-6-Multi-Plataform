@@ -19,7 +19,15 @@ public class CrystalPickup : NetworkBehaviour
         }
 
         collected = true;
+
         player.AddPoint();
+
+        CrystalSpawner spawner = FindFirstObjectByType<CrystalSpawner>();
+
+        if (spawner != null)
+        {
+            spawner.CrystalCollected(Object);
+        }
 
         Runner.Despawn(Object);
     }
